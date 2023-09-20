@@ -15,7 +15,7 @@
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/c93a9e65-1050-4300-b4c1-8f3e8ad814e7)
 
-`cd` chuyển hướng trong hệ thống tập tin
+`cd` Thay đổi vị trí thư mục hiện tại - di chuyển đến vị trí thư mục khác
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/b8752414-eeda-48c0-9e2d-4dbeb9b662a6)
 
@@ -25,8 +25,9 @@ các options:
 - `cd`    : di chuyển đến thư mục home
 - `cd /`  : di chuyển đến thư mục root
 - `cd -`  : di chuyển đến thư mục bạn ở trước đó
-- 
-
+- `cd <tên thư mục con>` : di chuyển đến thư mục con bên trong thư mục hiện tại
+- `cd <đường dẫn đến thư mục>` : di chuyển đến thư mục với đường dẫn cụ thể. Ví dụ **/home/itra/Documents**
+  
 `ls` xem nội dung của thư mục
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/12fe283c-f930-4ee9-94a4-f5ffde8c5063)
@@ -39,8 +40,26 @@ các options:
 
 - `ls -l` : hiển thị thông tin chi tiết của các file
 
+`cp` dùng để sao chép các tệp tin hay thư mục đến 1 thư mục khác
+- `cp <tên tập tin> <tên thư mục>` : dùng để copy một tập tin vào một thư mục
+- `cp -r <tên thư mục nguồn> <tên thư mục đích>` : dùng để copy thư mục nguồn vào thư mục đích
 
+`mv` Dùng để di chuyển tập tin đến một thư mục mới đồng thời đổi tên tập tin đó
+- `mv <tên tập tin cũ> <tên thư mục đích / tên tập tin mới>` : di chuyển một tập tin đến thư mục mới đồng thời đổi tên tập tin.
+- `mv <tên tập tin cũ> <tên thư mục đích>` : di chuyển tập tin đến thư mục đích và không đổi tên.
 
+`rm` dùng để xóa tệp tin hay thư mục
+- `rm <tên tập tin>` : dùng để xoá tập tin
+- `rm <tên thư mục>` : dùng để xoá một thư mục rỗng
+- `rm -r <tên thư mục>` : xoá bất kỳ thư mục nào
+
+`mkdir` để tạo thư mục mới `mkdir <tên thư mục>`
+
+`touch` để tạo file mới `touch <tên tập tin>`
+
+`man` hiển thị hướng dẫn các câu lệnh `man <tên câu lệnh>`
+
+## Các câu lệnh về thông tin hệ thống
 Để xem thông tin về hệ thống, ta có thể sử dụng các lệnh sau:
 
 `uname -m` để xem kiến trúc phần cứng của hệ thống 
@@ -67,13 +86,26 @@ Có thể dùng lệnh `lswh -short` để tóm ngắn gọn thông tin CPU, b�
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/0bc4249a-42ed-4c83-b9af-9e73f1357977)
 
+`free` để kiểm tra dung lượng RAM đang sử dụng và còn trống trên hệ thống
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/8308fb2e-dd24-4df0-b4ff-9cbbbdc10884)
+
+các options:
+- `-h`: (human-readable) hiển thị cách dễ đọc với con người
+- `-g`: hiển thị đơn vị dạng GB
+- `-m`: hiển thị đơn vị dạng MB
+
+`du` hiển thị mức chiếm dụng không gian đĩa cứng ở thư mục hiện tại và các thư mục con. 
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/c0bf481b-9674-4d7a-a7a6-9477bfa8d88b)
+
 `df` hoặc `df -h` để hiện thị địa chỉ của tệp tin và dung lượng của ổ cứng
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/61588592-2e3e-43f7-9a35-100525b8c29d)
 
-`free` để kiểm tra dung lượng RAM đang sử dụng và còn trống trên hệ thống
+`top` hiển thị thông tin về hệ thống Linux của bạn, các tiến trình đang chạy và tài nguyên hệ thống, bao gồm: CPU, RAM, phân vùng Swap, và tổng số các tác vụ đang chạy.
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/8308fb2e-dd24-4df0-b4ff-9cbbbdc10884)
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/1b1e10cd-93cd-4868-9d9b-fe6a8b7432a8)
 
 Để liệt kê các gói đã cài đặt trên Ubuntu, có thể sử dụng lệnh `apt list --installed`. 
 
@@ -91,7 +123,19 @@ Có thể sử dụng tiện ích _dpkg_ để liệt kê các gói đã cài đ
 
 _Sự khác biệt giữa `apt` và `dpkg` là: dpkg sẽ không cài dặt gói phụ thuộc, apt thì sẽ tự động kiểm tra và tải xuống các phần phụ thuộc_
 
+`ifconfig` Hiển thị danh sách các thiết bị mạng trên máy tính. Qua đó, bạn có thể biết được địa chỉ IP hiện tại của máy
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/87f0472e-1f86-4eab-a3fc-aed833f4dd74)
+
+`adduser` Dùng để thêm một user mới cho máy: `adduser <tên user mới>`
+
+`passwd` Dùng để thêm password cho người dùng mới: `passwd <tên user mới>`
+
+`sudo` Nhiều câu lệnh trong Terminal cần phải có sudo phía trước. Khi dùng sudo, máy tính hiểu rằng bạn đang thực thi câu lệnh với quyền cao nhất, đó là quyền root.
+
+Để thực thi được câu lệnh này, bạn bắt buộc phải nhập mật khẩu. Một số lệnh bắt buộc phải dùng sudo như:
+- `sudo shutdown -h now`: tắt máy tính ngay lập tức
+- `sudo reboot`: khởi động lại máy tính
 
 
 
