@@ -50,7 +50,7 @@ các options:
 
 `rm` dùng để xóa tệp tin hay thư mục
 - `rm <tên tập tin>` : dùng để xoá tập tin
-- `rm <tên thư mục>` : dùng để xoá một thư mục rỗng
+- `rmdỉr <tên thư mục>` : dùng để xoá một thư mục rỗng
 - `rm -r <tên thư mục>` : xoá bất kỳ thư mục nào
 
 `mkdir` để tạo thư mục mới `mkdir <tên thư mục>`
@@ -136,15 +136,86 @@ _Sự khác biệt giữa `apt` và `dpkg` là: dpkg sẽ không cài dặt gói
 Để thực thi được câu lệnh này, bạn bắt buộc phải nhập mật khẩu. Một số lệnh bắt buộc phải dùng sudo như:
 - `sudo shutdown -h now`: tắt máy tính ngay lập tức
 - `sudo reboot`: khởi động lại máy tính
+## Tìm hiểu trình soạn thảo văn bản vi
+- `vi <File_name>` tạo một file văn bản mới, mở nếu nó tồn tại
+- Chia làm 2 chế độ :
+   - chế độ soạn thảo văn bản (Insert Mode) : nhấn **i**
+   - chế độ lệnh (Command Mode) : nhấn **ESC**
+- Để thoát:
+   - thoát + không lưu : **:q!**
+   - thoát + lưu : **:wq!**
+- Để di chuyển: ở chế độ lệnh: dùng phím mũi tên. Một số lệnh
+   - **a** chèn văn bản ở sau vị trí con trỏ hiện tại
+   - **o** tạo một dòng mới để nhập vb tại vị trí con trỏ hiện tại
+   - **x** xóa một ký tự dưới vị trí con trỏ hiện tại
+   - **dd** xóa dòng mà con trỏ hiện tại đang ở
+   - **dS** xóa vị trí con trỏ tới phần cuối cùng của dòng
+   - **yy** sao chép dòng hiện tại
+   - **p** dán vb sau vị trí con trỏ
+Một số lệnh đọc file:
+  - **cat** đọc file, hiển thị văn bản ở terminal. Ngoài ra thì **cat >** còn có thể tạo và soạn thảo văn bản ngay trên cửa sổ terminal( sau khi soạn thảo xong thì nhấn _ctrl d_ )
+  - **view** xem văn bản ở chế độ chỉ đọc
 
+## User và Group trong Ubuntu
+### User
+- Có 2 loại User:
+   - User hệ thống: thực thi các module, script cần thiết phục vụ cho HĐH
+   - User người dùng: login để sử dụng HĐH, gồm có _super user_ và _regular user_
 
+- Về file **/etc/passwd**
+  
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/6faed4bd-d0e8-4a89-80c1-439f485fcb6c)
 
+Thông tin về file **/etc/passwd**
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/0f56040b-7fcb-482c-80a8-96f7fee8e392)
 
+- Các lệnh thực thi:
+   - Tạo User: `useradd [option] <username>`
+     các option:
+     - `-c "thông tin người dùng"`
+     - `-d <thư mục cá nhân>`
+     - `-m` tạo thư mục cá nhân nếu chưa tồn tại
+     - `-g <nhóm của người dùng>`
 
+   Ví dụ: để tạo 1 user thì ta sử dụng quyền root là **sudo**
+  
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/bfde0c08-5541-4734-8da1-d518c7db7cc2)
 
+   Nhớ đặt pass cho user sau khi add
 
+   ![image](https://github.com/itravnn/kcsc_train/assets/127108265/f880149c-3382-4f23-a6cb-73986174c573)
 
+   Sau đó dùng lệnh đọc file **/etc/passwd** để ktra xem user đã được tạo chưa
+
+   ![image](https://github.com/itravnn/kcsc_train/assets/127108265/8320ed4a-576d-482a-a5de-fa226dd6d90e)
+
+   
+   - Thay đổi thông tin cá nhân: `usermod [option] <username>`
+     các option tương tự **useradd**
+
+   - Xóa người dùng: `userdel [option] <username>`
+
+   - Khóa/Mở khóa người dùng
+      - `passwd -l <username>` / `passwd -u <username>`
+      - `usermod -L <username>` / `usermod -U <username>`
+
+### Group
+- Về file **/etc/group**
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/bc4efc6b-811b-4cdd-b461-a29c87e79c5e)
+
+_Các user có thể đọc được file này, tuy nhiên chỉ root mới thay đổi được_
+
+Thông tin file **/etc/group**
+
+![Screenshot from 2023-09-21 02-04-08](https://github.com/itravnn/kcsc_train/assets/127108265/a3c64cee-8089-4af1-b8f3-e68815623cdf)
+
+- Các lệnh thực thi: cơ bản giống với user
+  - tạo nhóm : ` groupadd <tên nhóm>`
+  - xóa nhóm : `groupdel <tên nhóm>`
+  - đổi tên nhóm : `groupmod -n <tên mới> <tên cũ>`
+  - sửa gid nhóm : `groupmod -g <gid mới> <tên nhóm>`
 
 
 
