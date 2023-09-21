@@ -217,5 +217,100 @@ Thông tin file **/etc/group**
   - đổi tên nhóm : `groupmod -n <tên mới> <tên cũ>`
   - sửa gid nhóm : `groupmod -g <gid mới> <tên nhóm>`
 
+## Lệnh find, grep, phân quyền tròng Ubuntu
+### Find
+- **find [path] [expression]**. Ví dụ
+   - Để tìm kiếm file có kiểu "txt" trong thư mục /home: `find /home -name "*.txt"`
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/9310926d-dccf-409e-a432-526e1d1d5584)
+
+_`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà không phân biệt hoa thường_
+
+  - Tìm kiếm các thư mục (-type d) có tên là src : `find / -type d -name src`
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/96df4d1f-4e11-42d3-b629-a0061de1dd12)
+
+   - find / -type f : chỉ tìm file
+    
+- Dùng các ký tự thay thế cho một phần hoăcj toàn bộ tên cần tìm kiếm:
+   - * : mọi chuỗi kể cả rỗng
+   - ? : một ký tự bất kỳ
+   - \ : loại bỏ ý nghĩa đặc biệt của các ký tự *, ?, vv
+### Grep
+- Tìm kiếm nội dung. Cú pháp: `grep [option] "nội dung" ten_file`. Các option:
+   - -i : không phân biệt chữ hoa thường
+   - -n : kèm theo số thứ tự dòng khi xuất
+   - -r : tìm lặp trong thư mục con
+   - -w : tìm nguyên từ
+
+- Ví dụ:
+  - Tìm những dùng có từ "chào" trong file xin.txt
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/437c3ee0-ed0b-41d8-90f3-51fecf8f0f39)
+
+  - Tìm file khi nhớ tên file và địa chỉ ở đâu, ta có thể sử dụng option _-r_. Giả sử tìm từ "chào" mà ta không nhớ tên file hay gì hết, ta dùng lệnh `grep -r "chào" *`
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/2e86196e-bea5-4fc5-90fe-c36e5ac6da87)
+
+### Phân quyền trong Ubuntu
+- Trong linux có 3 dạng đối tượng:
+   - Owner : người sở hữu
+   - Group owner : nhóm sở hữu
+   - Other users : người khác
+- Quyền hạn:
+  - **Read - r - 4** : cho phép đọc nội dung
+  - **Write - w - 2** : dùng để tạo, thay đổi hay xóa
+  - **Execute - x - 1*** : thực thi chương trình
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/e6aeb53b-e76d-4a09-9674-f3cf8286300a)
+
+_Có thể dùng lệnh **ls -l** để xem chi tiết các file, thư mục_
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/2df04320-b6eb-4d67-af6a-a8eaf1855b91)
+
+   | File type | User | Group | Other | Name |
+   | :-------- | :--- | :---- | :---- | :--- |
+   | d (dir)   | rwx  | rwx   | r-x   | bao  |
+   | - (file)  | rw-  | rw-   | r--   | chao |
+
+- Thay đổi quyền với `chmod`
+   - Phân quyền bằng số
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/7dc64ab6-f32d-4232-a488-9e704bf0df89)
+
+Ví dụ: để phân quyền cho một file có tên _chao_ với quyền _rwxrw-r--_. Nó có nghĩa là user có tất cả quyền đọc, ghi, thực thi. Group có quyền đọc và ghi và other thì chỉ có quyền đọc.
+
+user: r + w +x = 4 + 2 + 1 = 7
+
+group: r + w = 4 + 2 = 6
+
+other: r = 4 = 4
+
+Vậy quyền của cả file sẽ là **764**, sau đó sử dụng lệnh sau để phân quyền: `chmod 764 chao`
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/d7969bcf-2b2e-4720-bc48-035ec02b3f5f)
+
+  - Ngoài ra cũng có thể tham khảo thêm câu lệnh `chmod u=rwx,g=rw,o=r <filename>`
+
+  | Ký hiệu | Ý nghĩa |
+  | :------ | :------ |
+  | u       | user    |
+  | g       | group   |
+  | o       | other   |
+  | a       | tất cả  |
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
