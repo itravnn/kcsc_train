@@ -35,9 +35,7 @@ các options:
 các options:
     
 - `ls -R` : liệt kê các file và thư mục con bên trong
-
-- `ls -a` : liệt kê các file ẩn
-
+- `ls -a` : liệt kê các file ẩ
 - `ls -l` : hiển thị thông tin chi tiết của các file
 
 **cp** dùng để sao chép các tệp tin hay thư mục đến 1 thư mục khác
@@ -217,7 +215,7 @@ Thông tin file **/etc/group**
   - đổi tên nhóm : `groupmod -n <tên mới> <tên cũ>`
   - sửa gid nhóm : `groupmod -g <gid mới> <tên nhóm>`
 
-## Lệnh find, grep, phân quyền tròng Ubuntu
+## Lệnh find, grep, phân quyền trong Ubuntu
 ### Find
 - **find [path] [expression]**. Ví dụ
    - Để tìm kiếm file có kiểu "txt" trong thư mục /home: `find /home -name "*.txt"`
@@ -230,10 +228,10 @@ _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/96df4d1f-4e11-42d3-b629-a0061de1dd12)
 
-   - find / -type f : chỉ tìm file
+   - **find / -type f** : chỉ tìm file
     
 - Dùng các ký tự thay thế cho một phần hoăcj toàn bộ tên cần tìm kiếm:
-   - * : mọi chuỗi kể cả rỗng
+   - *: mọi chuỗi kể cả rỗng
    - ? : một ký tự bất kỳ
    - \ : loại bỏ ý nghĩa đặc biệt của các ký tự *, ?, vv
 ### Grep
@@ -242,7 +240,6 @@ _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà
    - -n : kèm theo số thứ tự dòng khi xuất
    - -r : tìm lặp trong thư mục con
    - -w : tìm nguyên từ
-
 - Ví dụ:
   - Tìm những dòng có từ "chào" trong file xin.txt
 
@@ -299,18 +296,169 @@ Vậy quyền của cả file sẽ là **764**, sau đó sử dụng lệnh sau 
   | o       | other   |
   | a       | tất cả  |
 
+## Lập trình Shell script trong Ubuntu
+### Thực thi file
+- Cấp quyền thực thi: `chmod u+x ten_file`
+- Chạy chương trình: **./ten_file** hoặc **/bin/sh ten_file.sh**
+Ví dụ: Soạn 1 chương trình trên text editor, cho ra 1 đoạn echo. Lưu chương trình trong thư mục text với tên test1.sh
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/089acac9-000d-41ff-b4c4-cc7f542f55f2)
 
+Sau đó nếu ta thử chạy file trên terminal thì sẽ baó lỗi chưa được cấp quyền thực thi
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/5f6f403e-bc8a-47d1-b687-e0a61d907e08)
 
+Sử dụng lệnh `chmod u+x test1.sh` để thêm quyền thực thi cho user trong file test1.sh
 
+Sau đó ta sẽ chạy được file 
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/0247f5ed-35b1-448b-9bbd-c341f69cd93c)
 
+### Biến
+- Gồm 2 loại:
+   - Biến hệ thống: được tạo ra và quản lí bởi linux, được viết bằng chữ in hoa (BASH, HOME, PATH...)
+   - Biến do người dùng định nghĩa: được tạo và quản lý bởi người dùng
+- Khai báo biến: **ten_bien=gia_tri**
+- Lệnh **echo**: xuất nội dung ra màn hình `echo [opion] [chuỗi/biến]`. Các opion:
+   - -n: không in ký tự xuống dòng
+   - -e: cho phép hiểu những ký tự theo sau dấu \ trong chuỗi
+   - \a: alert(tiếng chuông)
+   - \b: backspace
+   - \c: không xuống dòng
+   - \n: xuống dòng
+   - \r: về đầu dòng
+   - \t: tab
+   - \\: dấu \
+- Để xuất giá trị của biến( $ten_bien): **echo $ten_bien**
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/0529184a-637f-424b-a54d-d4bc7c7010d1)
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/74ebbb24-8cb4-43ab-ae62-0386d5047f5d)
 
+- Lệnh read: đọc dữ liệu từ bàn phím và gắn giá trị cho biến: **read n**
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/1f8c539f-6ed6-48cf-acae-48de4ef07689)
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/e1cebb7f-714b-4407-9398-c586943be333)
 
+### Các phép toán số học:
+   - Sử dụng **expr**:
 
+     vd ** a=`expr 23 + 3` **
+
+     _cặp dấu nháy ngược sẽ yêu cầu thực thi lệnh ( khác với dấu nháy kép sẽ được kiểu là chuỗi )_
+
+   - Sử dụng **let**:
+   
+     vd `let "a=$a+3"` || `let "a+=3"`
+   
+   - Sử dụng **$((...))**:
+
+      vd `a=$((a+4))` 
+
+Ví dụ:
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/6af5fca6-3213-46c5-b97b-d65a9e75ecaf)
+
+Kết quả
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/bf9d8dc2-4599-439a-bc61-44b2fc5af3e9)
+
+### So sánh chuỗi:
+
+| So sánh    | Kết quả      |
+| :----------| :------------|
+| str1 = str2| True nếu 2 chuỗi bằng nhau ( chính xác từng ký tự) |
+| str1 != str2 | True nếu 2 chuỗi không bằng nhau |
+| -n str1 | True nếu str1 không rỗng |
+| -z str1 | True nếu str1 rỗng ( chuỗi NULL ) |
+
+### Các phép toán tử so sánh số học:
+   - **-eq** : bằng
+   - **-ge** : lớn hơn hoặc bằng
+   - **-gt** : lớn hơn
+   - **-le** : nhỏ hơn hoặc bằng
+   - **-lt** : nhỏ hơn
+   - **-ne** : khác
+### Kiểm tra điều kiện tập tin:
+  
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/2ce798b3-041f-4026-9319-7bc0ca848fd4)
+
+### Các loại vòng lặp trong Shell
+#### Vòng lặp while 
+
+Vòng lặp while cho bạn khả năng thực thi một tập hợp các lệnh lặp đi lặp lại cho tới khi một số điều kiện xảy ra. Nó thường được sử dụng khi bạn cần thao tác giá trị biến lặp đi lặp lại.
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/7ee8cc59-3894-4779-9e48-96cbff220161)
+
+Ví dụ sử dụng vòng lặp while để hiển thị các số từ 0 đến 9
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/fcd65eb8-d1ca-4f2c-b0fe-ffa2dfa147c5)
+
+Kết quả được in ra như sau
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/766d1c28-99d5-41d8-affd-1451f37b1a22)
+
+#### Vòng lặp for
+
+Vòng lặp for hoạt động trên các danh sách của các mục. Nó lặp đi lặp lại một tập hợp các lệnh cho mỗi mục trong một danh sách.
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/2b30c484-b3b6-4631-99bc-33b6cdbac1d5)
+
+Ví dụ đơn giản mà sử dụng vòng lặp for để duyệt qua danh sách các số
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/681994b5-219b-4d1a-873c-37664aa31286)
+
+Kết quả ra được là
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/e12392c9-78f7-4f2a-b630-78326faad3be)
+
+#### Vòng lặp until
+
+Vòng lặp while là hoàn hảo cho tình huống mà bạn muốn thực thi một tập hợp lệnh trong khi một số điều kiện là true.
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/72adc3f1-b44c-4568-953a-a277f30692e6)
+
+Ở đây command được ước lượng. Nếu giá trị kết quả là false, thì lệnh được thực thi. Nếu command là true, thì khi đó các lệnh sẽ không được thực hiện và chương trình sẽ nhảy tới dòng lệnh sau lệnh done.
+
+VÍ dụ sử dụng vòng lặp until để hiển thị các số từ 0 đến 9
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/35bb6b1b-b48a-45c6-bafc-504580c3e6f1)
+
+Kết quả
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/fbb132be-def0-4567-a6b7-dbe7559326ae)
+
+#### Vòng lặp select
+
+Vòng lặp select cung cấp một cách dễ dàng để tạo một menu được đánh số từ đó người sử dụng có thể chọn lựa
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/48154a4c-d5fb-41b7-8d96-c7de267e386f)
+
+Vòng lặp select thường được kết hợp cùng lệnh **case**
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/8c7a14f0-ad46-4a43-b5d6-69ad2a7f7bd2)
+
+Ví dụ cho 1 người chọn 1 loại quả trong danh sách
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/a50ff8da-1a09-45ba-8bd7-b866c38f9c5c)
+
+Kết quả hiển thị
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/81a11e5e-47da-4ab9-9850-4945793515b1)
+
+### Câu điều kiện 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/3001cfa8-9b28-42a3-9014-562587c87db3)
+
+Ví dụ so sánh 2 số nhập từ bàn phím
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/e91b8c4c-b72f-456e-8432-1d1a32205add)
+
+Kết quả cho ra
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/c295902d-2cb2-40ef-a4fd-82bd96763a42)
+
+Ví dụ tiếp theo ta sẽ kiểm tra 1 thư mục xem có tồn tại không sau nếu có thì in ra dường dẫn nếu không thì báo lỗi
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/f2c0999f-9bc5-4f83-b21a-3946420dd170)
 
