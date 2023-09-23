@@ -1,3 +1,4 @@
+* [Các thao tác cơ bản](#ct)
 # Giới thiệu chung
 - Linux là một hệ điều hành máy tính được phát triển từ năm 1991 dựa trên hệ điều hành Unix và bằng viết bằng ngôn ngữ C.
 - Cấu trúc hệ điều hành:
@@ -9,7 +10,7 @@
   - Application: là ứng dụng người dùng, phần để người dùng cài ứng dụng, chạy ứng dụng phục vụ yêu cầu của mình.
 - Trong linux, hệ thống file được tổ chức theo dạng cây
 - **Ubuntu** là một trong những phiên bản Linux phổ biến nhất. Vì vậy, hiện tại mình đang sử dụng hệ điều hành này. Ubuntu cung cấp rất nhiều các câu lệnh sử dụng trên Terminal. Để mở Terminal, sử dụng phím tắt: **Ctrl Alt T**
-# Các thao tác cơ bản
+# Các thao tác cơ bản <a name='ct'></a>
 ## Các câu lệnh về thư mục và tập tin
 **pwd** sẽ in ra đường dẫn thư mục hiện tại đang ở
 
@@ -370,27 +371,25 @@ Sau đó ta sẽ chạy được file
 ### Các phép toán số học:
    - Sử dụng **expr**:
 
-     vd ** a=`expr 23 + 3` **
+     vd  **a=\`expr 23 + 3\`** 
 
      _cặp dấu nháy ngược sẽ yêu cầu thực thi lệnh ( khác với dấu nháy kép sẽ được kiểu là chuỗi )_
 
    - Sử dụng **let**:
    
-     vd `let "a=$a+3"` || `let "a+=3"`
+     vd **let "a=$a+3"** || **let "a+=3"**
    
    - Sử dụng **$((...))**:
 
-      vd `a=$((a+4))` 
+      vd **a=$((a+4))** 
 
 Ví dụ:
 
 ![Screenshot from 2023-09-22 23-51-06](https://github.com/itravnn/kcsc_train/assets/127108265/d1efc20f-ab37-4e6c-9b15-9503b218d36f)
 
-
 Kết quả
 
 ![Screenshot from 2023-09-22 23-51-40](https://github.com/itravnn/kcsc_train/assets/127108265/b72393a2-192f-4bdd-a272-a478b90f9f0d)
-
 
 ### So sánh chuỗi:
 
@@ -412,7 +411,6 @@ Kết quả
   
 ![Screenshot from 2023-09-23 00-09-16](https://github.com/itravnn/kcsc_train/assets/127108265/d7d8d756-27b3-44b2-89b9-00a4dc7f3754)
 
-
 ### Các loại vòng lặp trong Shell
 #### Vòng lặp while 
 
@@ -420,11 +418,9 @@ Vòng lặp while cho bạn khả năng thực thi một tập hợp các lệnh
 
 ![Screenshot from 2023-09-23 00-19-57](https://github.com/itravnn/kcsc_train/assets/127108265/d76bd08a-421f-4bd5-b621-647c0d42e87b)
 
-
 Ví dụ sử dụng vòng lặp while để hiển thị các số từ 0 đến 9
 
 ![Screenshot from 2023-09-23 00-27-36](https://github.com/itravnn/kcsc_train/assets/127108265/d45092fd-fe60-4922-be84-b491776302e8)
-
 
 Kết quả được in ra như sau
 
@@ -436,17 +432,13 @@ Vòng lặp for hoạt động trên các danh sách của các mục. Nó lặp
 
 ![Screenshot from 2023-09-23 00-33-32](https://github.com/itravnn/kcsc_train/assets/127108265/935bd9db-4211-41e7-b332-74c4bbfbc293)
 
-
 Ví dụ đơn giản mà sử dụng vòng lặp for để duyệt qua danh sách các số
 
 ![Screenshot from 2023-09-23 00-49-43](https://github.com/itravnn/kcsc_train/assets/127108265/551e7141-8751-4b18-93f5-173dbcf15e58)
 
-
-
 Kết quả ra được là
 
 ![Screenshot from 2023-09-23 00-48-57](https://github.com/itravnn/kcsc_train/assets/127108265/91c259e3-8bf9-4445-b2cb-95c3f1272c30)
-
 
 #### Vòng lặp until
 
@@ -454,13 +446,11 @@ Vòng lặp while là hoàn hảo cho tình huống mà bạn muốn thực thi 
 
 ![Screenshot from 2023-09-23 00-51-26](https://github.com/itravnn/kcsc_train/assets/127108265/47f7b2a4-3e81-4597-8720-da0772b76547)
 
-
 Ở đây command được ước lượng. Nếu giá trị kết quả là false, thì lệnh được thực thi. Nếu command là true, thì khi đó các lệnh sẽ không được thực hiện và chương trình sẽ nhảy tới dòng lệnh sau lệnh done.
 
 VÍ dụ sử dụng vòng lặp until để hiển thị các số từ 0 đến 9
 
 ![Screenshot from 2023-09-23 00-56-58](https://github.com/itravnn/kcsc_train/assets/127108265/b667012b-dc0f-41f4-963f-299eb2443aa2)
-
 
 Kết quả
 
@@ -471,7 +461,6 @@ Kết quả
 Vòng lặp select cung cấp một cách dễ dàng để tạo một menu được đánh số từ đó người sử dụng có thể chọn lựa
 
 ![Screenshot from 2023-09-23 00-59-14](https://github.com/itravnn/kcsc_train/assets/127108265/7546a704-de73-43b3-9635-a31befa33040)
-
 
 Vòng lặp select thường được kết hợp cùng lệnh **case**
 
@@ -500,4 +489,17 @@ Kết quả cho ra
 Ví dụ tiếp theo ta sẽ kiểm tra 1 thư mục xem có tồn tại không sau nếu có thì in ra dường dẫn nếu không thì báo lỗi
 
 ![Screenshot from 2023-09-23 01-57-32](https://github.com/itravnn/kcsc_train/assets/127108265/3a6c660d-997d-4069-9ae5-32c24c1ad982)
+
+
+
+
+
+
+
+
+
+
+
+
+
 
