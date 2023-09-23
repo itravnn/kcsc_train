@@ -105,7 +105,8 @@ các options:
 
 **du** hiển thị mức chiếm dụng không gian đĩa cứng ở thư mục hiện tại và các thư mục con. 
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/c0bf481b-9674-4d7a-a7a6-9477bfa8d88b)
+![Screenshot from 2023-09-20 17-05-15](https://github.com/itravnn/kcsc_train/assets/127108265/ea0a1220-c2e6-472c-a909-f1f625cc6589)
+
 
 **df** hoặc **df -h** để hiện thị địa chỉ của tệp tin và dung lượng của ổ cứng
 
@@ -138,7 +139,7 @@ _Sự khác biệt giữa `apt` và `dpkg` là: dpkg sẽ không cài dặt gói
 
 **ifconfig** Hiển thị danh sách các thiết bị mạng trên máy tính. Qua đó, bạn có thể biết được địa chỉ IP hiện tại của máy
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/87f0472e-1f86-4eab-a3fc-aed833f4dd74)
+![Screenshot from 2023-09-20 17-09-07](https://github.com/itravnn/kcsc_train/assets/127108265/bb5243f6-be66-4166-8210-4500a1baa36e)
 
 **adduser** Dùng để thêm một user mới cho máy: `adduser <tên user mới>`
 
@@ -177,11 +178,13 @@ Một số lệnh đọc file:
 
 - Về file **/etc/passwd**
   
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/6faed4bd-d0e8-4a89-80c1-439f485fcb6c)
+![Screenshot from 2023-09-21 01-51-22](https://github.com/itravnn/kcsc_train/assets/127108265/744fe08d-3c46-44d3-963d-700a2573003b)
+
 
 Thông tin về file **/etc/passwd**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/0f56040b-7fcb-482c-80a8-96f7fee8e392)
+![Screenshot from 2023-09-21 01-53-30](https://github.com/itravnn/kcsc_train/assets/127108265/83a50e5e-79f5-48d4-b378-58e62851893e)
+
 
 - Các lệnh thực thi:
    - Tạo User: `useradd [option] <username>`
@@ -193,15 +196,17 @@ Thông tin về file **/etc/passwd**
 
    Ví dụ: để tạo 1 user thì ta sử dụng quyền root là **sudo**
   
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/bfde0c08-5541-4734-8da1-d518c7db7cc2)
+![Screenshot from 2023-09-21 02-25-21](https://github.com/itravnn/kcsc_train/assets/127108265/39bbe0c2-ef55-4f62-a122-ebbcf7faa9c9)
+
 
    Nhớ đặt pass cho user sau khi add
 
-   ![image](https://github.com/itravnn/kcsc_train/assets/127108265/f880149c-3382-4f23-a6cb-73986174c573)
+ ![Screenshot from 2023-09-21 02-33-26](https://github.com/itravnn/kcsc_train/assets/127108265/c9bcd5eb-1e77-44e9-98d6-b814c36c7341)
 
    Sau đó dùng lệnh đọc file **/etc/passwd** để ktra xem user đã được tạo chưa
 
-   ![image](https://github.com/itravnn/kcsc_train/assets/127108265/8320ed4a-576d-482a-a5de-fa226dd6d90e)
+ ![Screenshot from 2023-09-21 02-30-42](https://github.com/itravnn/kcsc_train/assets/127108265/bf6627ad-9844-433e-959a-e5ff39bd0aee)
+
 
    
    - Thay đổi thông tin cá nhân: `usermod [option] <username>`
@@ -216,13 +221,14 @@ Thông tin về file **/etc/passwd**
 ### Group
 - Về file **/etc/group**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/bc4efc6b-811b-4cdd-b461-a29c87e79c5e)
+![Screenshot from 2023-09-21 02-03-06](https://github.com/itravnn/kcsc_train/assets/127108265/dac4fe40-23e2-408d-a2d1-368e5ad4697a)
+
 
 _Các user có thể đọc được file này, tuy nhiên chỉ root mới thay đổi được_
 
 Thông tin file **/etc/group**
 
-![Screenshot from 2023-09-21 02-04-08](https://github.com/itravnn/kcsc_train/assets/127108265/a3c64cee-8089-4af1-b8f3-e68815623cdf)
+![Screenshot from 2023-09-21 02-04-08](https://github.com/itravnn/kcsc_train/assets/127108265/5a71a268-1413-40c3-bd3a-2fc7be8c0852)
 
 - Các lệnh thực thi: cơ bản giống với user
   - tạo nhóm : ` groupadd <tên nhóm>`
@@ -235,13 +241,15 @@ Thông tin file **/etc/group**
 - **find [path] [expression]**. Ví dụ
    - Để tìm kiếm file có kiểu "txt" trong thư mục /home: `find /home -name "*.txt"`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/9310926d-dccf-409e-a432-526e1d1d5584)
+![Screenshot from 2023-09-21 23-42-56](https://github.com/itravnn/kcsc_train/assets/127108265/714e2856-efaa-4593-81ae-859960b6eba4)
+
 
 _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà không phân biệt hoa thường_
 
   - Tìm kiếm các thư mục (-type d) có tên là src : `find / -type d -name src`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/96df4d1f-4e11-42d3-b629-a0061de1dd12)
+![Screenshot from 2023-09-21 23-46-26](https://github.com/itravnn/kcsc_train/assets/127108265/f4086336-911d-4960-984c-01c7a648d8fe)
+
 
    - **find / -type f** : chỉ tìm file
     
@@ -257,12 +265,11 @@ _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà
    - -w : tìm nguyên từ
 - Ví dụ:
   - Tìm những dòng có từ "chào" trong file xin.txt
-
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/437c3ee0-ed0b-41d8-90f3-51fecf8f0f39)
+![Screenshot from 2023-09-22 00-19-22](https://github.com/itravnn/kcsc_train/assets/127108265/02f2f7de-8717-43ed-aa88-04b085d8e34d)
 
   - Tìm file khi nhớ tên file và địa chỉ ở đâu, ta có thể sử dụng option _-r_. Giả sử tìm từ "chào" mà ta không nhớ tên file hay gì hết, ta dùng lệnh `grep -r "chào" *`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/2e86196e-bea5-4fc5-90fe-c36e5ac6da87)
+![Screenshot from 2023-09-22 00-25-15](https://github.com/itravnn/kcsc_train/assets/127108265/ceeb1510-eedb-4762-996d-a8d38b46ebe2)
 
 ### Phân quyền trong Ubuntu
 - Trong linux có 3 dạng đối tượng:
@@ -274,11 +281,11 @@ _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà
   - **Write - w - 2** : dùng để tạo, thay đổi hay xóa
   - **Execute - x - 1*** : thực thi chương trình
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/e6aeb53b-e76d-4a09-9674-f3cf8286300a)
+![Screenshot from 2023-09-22 00-37-23](https://github.com/itravnn/kcsc_train/assets/127108265/219e059d-a518-4e41-8b9c-8d6cc9e9ab57)
 
 _Có thể dùng lệnh **ls -l** để xem chi tiết các file, thư mục_
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/2df04320-b6eb-4d67-af6a-a8eaf1855b91)
+![Screenshot from 2023-09-22 00-43-18](https://github.com/itravnn/kcsc_train/assets/127108265/00bb1bce-498f-4b95-9e27-a7397cc90c2d)
 
    | File type | User | Group | Other | Name |
    | :-------- | :--- | :---- | :---- | :--- |
@@ -288,7 +295,7 @@ _Có thể dùng lệnh **ls -l** để xem chi tiết các file, thư mục_
 - Thay đổi quyền với `chmod`
    - Phân quyền bằng số
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/7dc64ab6-f32d-4232-a488-9e704bf0df89)
+![Screenshot from 2023-09-22 00-39-15](https://github.com/itravnn/kcsc_train/assets/127108265/52d2b3ba-4934-4091-8870-ae216df967db)
 
 Ví dụ: để phân quyền cho một file có tên _chao_ với quyền _rwxrw-r--_. Nó có nghĩa là user có tất cả quyền đọc, ghi, thực thi. Group có quyền đọc và ghi và other thì chỉ có quyền đọc.
 
@@ -300,7 +307,8 @@ other: r = 4 = 4
 
 Vậy quyền của cả file sẽ là **764**, sau đó sử dụng lệnh sau để phân quyền: `chmod 764 chao`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/d7969bcf-2b2e-4720-bc48-035ec02b3f5f)
+![Screenshot from 2023-09-22 00-59-00](https://github.com/itravnn/kcsc_train/assets/127108265/6f66facf-c328-46f3-9ced-b7c3f9a75da3)
+
 
   - Ngoài ra cũng có thể tham khảo thêm câu lệnh `chmod u=rwx,g=rw,o=r <filename>`
 
@@ -317,17 +325,17 @@ Vậy quyền của cả file sẽ là **764**, sau đó sử dụng lệnh sau 
 - Chạy chương trình: **./ten_file** hoặc **/bin/sh ten_file.sh**
 Ví dụ: Soạn 1 chương trình trên text editor, cho ra 1 đoạn echo. Lưu chương trình trong thư mục text với tên test1.sh
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/089acac9-000d-41ff-b4c4-cc7f542f55f2)
+![Screenshot from 2023-09-22 22-59-36](https://github.com/itravnn/kcsc_train/assets/127108265/8fe79315-f348-4978-9199-1dbe3019636c)
 
 Sau đó nếu ta thử chạy file trên terminal thì sẽ baó lỗi chưa được cấp quyền thực thi
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/5f6f403e-bc8a-47d1-b687-e0a61d907e08)
+![Screenshot from 2023-09-22 23-00-54](https://github.com/itravnn/kcsc_train/assets/127108265/39a40645-ac13-41dc-a0d3-ff48fb1ac8ca)
 
 Sử dụng lệnh `chmod u+x test1.sh` để thêm quyền thực thi cho user trong file test1.sh
 
 Sau đó ta sẽ chạy được file 
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/0247f5ed-35b1-448b-9bbd-c341f69cd93c)
+![Screenshot from 2023-09-22 23-04-34](https://github.com/itravnn/kcsc_train/assets/127108265/eaaa9311-b6f4-41a3-9af7-a29c46c3ddab)
 
 ### Biến
 - Gồm 2 loại:
@@ -346,15 +354,18 @@ Sau đó ta sẽ chạy được file
    - \\: dấu \
 - Để xuất giá trị của biến( $ten_bien): **echo $ten_bien**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/0529184a-637f-424b-a54d-d4bc7c7010d1)
+![Screenshot from 2023-09-22 23-24-54](https://github.com/itravnn/kcsc_train/assets/127108265/1f71f5d5-d1ca-4714-a740-1062e2ffa8d9)
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/74ebbb24-8cb4-43ab-ae62-0386d5047f5d)
+Đầu ra
+
+![Screenshot from 2023-09-22 23-25-24](https://github.com/itravnn/kcsc_train/assets/127108265/d94ee3a5-08e7-46b1-8ff0-62e00f62e1d0)
 
 - Lệnh read: đọc dữ liệu từ bàn phím và gắn giá trị cho biến: **read n**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/1f8c539f-6ed6-48cf-acae-48de4ef07689)
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/b0e15082-f87b-41a4-9564-f58ff33106c5)
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/e1cebb7f-714b-4407-9398-c586943be333)
+
+![Screenshot from 2023-09-22 23-28-20](https://github.com/itravnn/kcsc_train/assets/127108265/d9a28f3f-9809-4f84-a22a-8b2a8dedab53)
 
 ### Các phép toán số học:
    - Sử dụng **expr**:
@@ -373,11 +384,13 @@ Sau đó ta sẽ chạy được file
 
 Ví dụ:
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/6af5fca6-3213-46c5-b97b-d65a9e75ecaf)
+![Screenshot from 2023-09-22 23-51-06](https://github.com/itravnn/kcsc_train/assets/127108265/d1efc20f-ab37-4e6c-9b15-9503b218d36f)
+
 
 Kết quả
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/bf9d8dc2-4599-439a-bc61-44b2fc5af3e9)
+![Screenshot from 2023-09-22 23-51-40](https://github.com/itravnn/kcsc_train/assets/127108265/b72393a2-192f-4bdd-a272-a478b90f9f0d)
+
 
 ### So sánh chuỗi:
 
@@ -397,83 +410,94 @@ Kết quả
    - **-ne** : khác
 ### Kiểm tra điều kiện tập tin:
   
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/2ce798b3-041f-4026-9319-7bc0ca848fd4)
+![Screenshot from 2023-09-23 00-09-16](https://github.com/itravnn/kcsc_train/assets/127108265/d7d8d756-27b3-44b2-89b9-00a4dc7f3754)
+
 
 ### Các loại vòng lặp trong Shell
 #### Vòng lặp while 
 
 Vòng lặp while cho bạn khả năng thực thi một tập hợp các lệnh lặp đi lặp lại cho tới khi một số điều kiện xảy ra. Nó thường được sử dụng khi bạn cần thao tác giá trị biến lặp đi lặp lại.
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/7ee8cc59-3894-4779-9e48-96cbff220161)
+![Screenshot from 2023-09-23 00-19-57](https://github.com/itravnn/kcsc_train/assets/127108265/d76bd08a-421f-4bd5-b621-647c0d42e87b)
+
 
 Ví dụ sử dụng vòng lặp while để hiển thị các số từ 0 đến 9
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/fcd65eb8-d1ca-4f2c-b0fe-ffa2dfa147c5)
+![Screenshot from 2023-09-23 00-27-36](https://github.com/itravnn/kcsc_train/assets/127108265/d45092fd-fe60-4922-be84-b491776302e8)
+
 
 Kết quả được in ra như sau
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/766d1c28-99d5-41d8-affd-1451f37b1a22)
+!![Screenshot from 2023-09-23 00-28-34](https://github.com/itravnn/kcsc_train/assets/127108265/278e3a02-d535-49cf-802a-dab8475383f7)
 
 #### Vòng lặp for
 
 Vòng lặp for hoạt động trên các danh sách của các mục. Nó lặp đi lặp lại một tập hợp các lệnh cho mỗi mục trong một danh sách.
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/2b30c484-b3b6-4631-99bc-33b6cdbac1d5)
+![Screenshot from 2023-09-23 00-33-32](https://github.com/itravnn/kcsc_train/assets/127108265/935bd9db-4211-41e7-b332-74c4bbfbc293)
+
 
 Ví dụ đơn giản mà sử dụng vòng lặp for để duyệt qua danh sách các số
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/681994b5-219b-4d1a-873c-37664aa31286)
+![Screenshot from 2023-09-23 00-49-43](https://github.com/itravnn/kcsc_train/assets/127108265/551e7141-8751-4b18-93f5-173dbcf15e58)
+
+
 
 Kết quả ra được là
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/e12392c9-78f7-4f2a-b630-78326faad3be)
+![Screenshot from 2023-09-23 00-48-57](https://github.com/itravnn/kcsc_train/assets/127108265/91c259e3-8bf9-4445-b2cb-95c3f1272c30)
+
 
 #### Vòng lặp until
 
 Vòng lặp while là hoàn hảo cho tình huống mà bạn muốn thực thi một tập hợp lệnh trong khi một số điều kiện là true.
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/72adc3f1-b44c-4568-953a-a277f30692e6)
+![Screenshot from 2023-09-23 00-51-26](https://github.com/itravnn/kcsc_train/assets/127108265/47f7b2a4-3e81-4597-8720-da0772b76547)
+
 
 Ở đây command được ước lượng. Nếu giá trị kết quả là false, thì lệnh được thực thi. Nếu command là true, thì khi đó các lệnh sẽ không được thực hiện và chương trình sẽ nhảy tới dòng lệnh sau lệnh done.
 
 VÍ dụ sử dụng vòng lặp until để hiển thị các số từ 0 đến 9
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/35bb6b1b-b48a-45c6-bafc-504580c3e6f1)
+![Screenshot from 2023-09-23 00-56-58](https://github.com/itravnn/kcsc_train/assets/127108265/b667012b-dc0f-41f4-963f-299eb2443aa2)
+
 
 Kết quả
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/fbb132be-def0-4567-a6b7-dbe7559326ae)
+![Screenshot from 2023-09-23 00-57-34](https://github.com/itravnn/kcsc_train/assets/127108265/62cbfa77-6fcc-45ab-99f2-b721f1770c93)
 
 #### Vòng lặp select
 
 Vòng lặp select cung cấp một cách dễ dàng để tạo một menu được đánh số từ đó người sử dụng có thể chọn lựa
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/48154a4c-d5fb-41b7-8d96-c7de267e386f)
+![Screenshot from 2023-09-23 00-59-14](https://github.com/itravnn/kcsc_train/assets/127108265/7546a704-de73-43b3-9635-a31befa33040)
+
 
 Vòng lặp select thường được kết hợp cùng lệnh **case**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/8c7a14f0-ad46-4a43-b5d6-69ad2a7f7bd2)
+![Screenshot from 2023-09-23 01-12-40](https://github.com/itravnn/kcsc_train/assets/127108265/84ee59f6-6871-4c63-bddf-c01a92cb2293)
 
 Ví dụ cho 1 người chọn 1 loại quả trong danh sách
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/a50ff8da-1a09-45ba-8bd7-b866c38f9c5c)
+![Screenshot from 2023-09-23 01-18-56](https://github.com/itravnn/kcsc_train/assets/127108265/86b672c8-1523-4260-8331-bb2394d5b207)
 
 Kết quả hiển thị
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/81a11e5e-47da-4ab9-9850-4945793515b1)
+![Screenshot from 2023-09-23 01-19-59](https://github.com/itravnn/kcsc_train/assets/127108265/70b65b29-e01a-40f4-8a72-928c08e86307)
 
 ### Câu điều kiện 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/3001cfa8-9b28-42a3-9014-562587c87db3)
+
+![Screenshot from 2023-09-23 01-31-17](https://github.com/itravnn/kcsc_train/assets/127108265/5a491f7b-97a1-4e97-a76f-8ca86bcdbd18)
 
 Ví dụ so sánh 2 số nhập từ bàn phím
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/e91b8c4c-b72f-456e-8432-1d1a32205add)
+![Screenshot from 2023-09-23 01-37-16](https://github.com/itravnn/kcsc_train/assets/127108265/87b41867-775f-4cdc-83f7-f9bca5c50d4f)
 
 Kết quả cho ra
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/c295902d-2cb2-40ef-a4fd-82bd96763a42)
+![Screenshot from 2023-09-23 01-36-52](https://github.com/itravnn/kcsc_train/assets/127108265/56c87e52-ac21-444b-9f30-370a80dfbabd)
 
 Ví dụ tiếp theo ta sẽ kiểm tra 1 thư mục xem có tồn tại không sau nếu có thì in ra dường dẫn nếu không thì báo lỗi
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/f2c0999f-9bc5-4f83-b21a-3946420dd170)
+![Screenshot from 2023-09-23 01-57-32](https://github.com/itravnn/kcsc_train/assets/127108265/3a6c660d-997d-4069-9ae5-32c24c1ad982)
 
