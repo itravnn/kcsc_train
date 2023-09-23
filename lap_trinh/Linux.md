@@ -1,4 +1,3 @@
-* [Các thao tác cơ bản](#ct)
 # Giới thiệu chung
 - Linux là một hệ điều hành máy tính được phát triển từ năm 1991 dựa trên hệ điều hành Unix và bằng viết bằng ngôn ngữ C.
 - Cấu trúc hệ điều hành:
@@ -11,7 +10,13 @@
 - Trong linux, hệ thống file được tổ chức theo dạng cây
 - **Ubuntu** là một trong những phiên bản Linux phổ biến nhất. Vì vậy, hiện tại mình đang sử dụng hệ điều hành này. Ubuntu cung cấp rất nhiều các câu lệnh sử dụng trên Terminal. Để mở Terminal, sử dụng phím tắt: **Ctrl Alt T**
 # Các thao tác cơ bản <a name='ct'></a>
-## Các câu lệnh về thư mục và tập tin
+* [Các câu lệnh về thư mục và tập tin](#c1)
+* [Các câu lệnh về thông tin hệ thống](#c2)
+* [Tìm hiểu trình soạn thảo văn bản vi](#c3)
+* [User và Group trong Ubuntu](#c4)
+* [Lệnh find, grep, phân quyền trong Ubuntu](#c5)
+* [Lập trình Shell script trong Ubuntu](#c6)
+## Các câu lệnh về thư mục và tập tin<a name='c1'></a>
 **pwd** sẽ in ra đường dẫn thư mục hiện tại đang ở
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/1e50faa0-b96e-4c79-a60d-e0b34864aae7)
@@ -61,7 +66,7 @@ các options:
 
 **man** hiển thị hướng dẫn các câu lệnh `man <tên câu lệnh>`
 
-## Các câu lệnh về thông tin hệ thống
+## Các câu lệnh về thông tin hệ thống<a name='c2'></a>
 Để xem thông tin về hệ thống, ta có thể sử dụng các lệnh sau:
 
 **uname -m** để xem kiến trúc phần cứng của hệ thống 
@@ -151,7 +156,7 @@ _Sự khác biệt giữa `apt` và `dpkg` là: dpkg sẽ không cài dặt gói
 Để thực thi được câu lệnh này, bạn bắt buộc phải nhập mật khẩu. Một số lệnh bắt buộc phải dùng sudo như:
 - `sudo shutdown -h now`: tắt máy tính ngay lập tức
 - `sudo reboot`: khởi động lại máy tính
-## Tìm hiểu trình soạn thảo văn bản vi
+## Tìm hiểu trình soạn thảo văn bản vi<a name='c3'></a>
 - `vi <File_name>` tạo một file văn bản mới, mở nếu nó tồn tại
 - Chia làm 2 chế độ :
    - chế độ soạn thảo văn bản (Insert Mode) : nhấn **i**
@@ -171,7 +176,7 @@ Một số lệnh đọc file:
   - **cat** đọc file, hiển thị văn bản ở terminal. Ngoài ra thì **cat >** còn có thể tạo và soạn thảo văn bản ngay trên cửa sổ terminal( sau khi soạn thảo xong thì nhấn _ctrl d_ )
   - **view** xem văn bản ở chế độ chỉ đọc
 
-## User và Group trong Ubuntu
+## User và Group trong Ubuntu<a name='c4'></a>
 ### User
 - Có 2 loại User:
    - User hệ thống: thực thi các module, script cần thiết phục vụ cho HĐH
@@ -237,7 +242,7 @@ Thông tin file **/etc/group**
   - đổi tên nhóm : `groupmod -n <tên mới> <tên cũ>`
   - sửa gid nhóm : `groupmod -g <gid mới> <tên nhóm>`
 
-## Lệnh find, grep, phân quyền trong Ubuntu
+## Lệnh find, grep, phân quyền trong Ubuntu<a name='c5'></a>
 ### Find
 - **find [path] [expression]**. Ví dụ
    - Để tìm kiếm file có kiểu "txt" trong thư mục /home: `find /home -name "*.txt"`
@@ -320,7 +325,7 @@ Vậy quyền của cả file sẽ là **764**, sau đó sử dụng lệnh sau 
   | o       | other   |
   | a       | tất cả  |
 
-## Lập trình Shell script trong Ubuntu
+## Lập trình Shell script trong Ubuntu<a name='c6'></a>
 ### Thực thi file
 - Cấp quyền thực thi: `chmod u+x ten_file`
 - Chạy chương trình: **./ten_file** hoặc **/bin/sh ten_file.sh**
