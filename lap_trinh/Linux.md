@@ -13,11 +13,13 @@
 ## Các câu lệnh về thư mục và tập tin
 **pwd** sẽ in ra đường dẫn thư mục hiện tại đang ở
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/c93a9e65-1050-4300-b4c1-8f3e8ad814e7)
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/1e50faa0-b96e-4c79-a60d-e0b34864aae7)
+
 
 **cd** Thay đổi vị trí thư mục hiện tại - di chuyển đến vị trí thư mục khác
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/b8752414-eeda-48c0-9e2d-4dbeb9b662a6)
+![Screenshot from 2023-08-30 23-39-31](https://github.com/itravnn/kcsc_train/assets/127108265/c581e86c-7092-4f0a-a790-bd5230b544f0)
+
 
 các options:
 
@@ -30,7 +32,8 @@ các options:
   
 **ls** xem nội dung của thư mục
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/12fe283c-f930-4ee9-94a4-f5ffde8c5063)
+![Screenshot from 2023-08-30 23-50-26](https://github.com/itravnn/kcsc_train/assets/127108265/ede8c427-3ca1-4444-bcd4-e2a53e8375a4)
+
 
 các options:
     
@@ -62,31 +65,38 @@ các options:
 
 **uname -m** để xem kiến trúc phần cứng của hệ thống 
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/43f18a9a-14c7-4d4a-a5f8-29f7c8d0db23)
+![Screenshot from 2023-08-31 00-09-32](https://github.com/itravnn/kcsc_train/assets/127108265/48bc8201-2c46-4d31-b578-e84cf186a507)
 
-Đầu ra  ![image](https://github.com/itravnn/kcsc_train/assets/127108265/f9a09b02-7eff-4244-bedf-e1d4c1982329) cho biết bạn đang sử dụng kiến trúc 64bit. Đầu ra `i686` sẽ là hệ thống 32bit
+
+Đầu ra ![Screenshot from 2023-08-31 00-10-21](https://github.com/itravnn/kcsc_train/assets/127108265/3b6006ea-3b86-48fc-868c-fbbe9819f7f4)
+ cho biết bạn đang sử dụng kiến trúc 64bit. Đầu ra `i686` sẽ là hệ thống 32bit
 
 **uname -o** cho biết tên hệ hiều hành đang sử dụng
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/e713d9f5-69dd-49bd-b4c9-d992feebce0d)
+![Screenshot from 2023-08-31 00-13-21](https://github.com/itravnn/kcsc_train/assets/127108265/6b98bb19-56ff-46ac-ab51-f5d7c7a8672d)
+
 
 **lshw** để xem thông tin phần cứng quan trọng như bộ nhớ, CPU, ổ cứng ....
 
 _LƯU Ý_ là lệnh trên chạy được với tư cách là _root_, ta sử dụng lệnh **sudo** để cho biết là máy chủ, sau đó hệ thống sẽ hỏi passwd để xác minh
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/179ee4d9-9ee4-4c6f-a9d7-fb8dd06aa1e2)
+![Screenshot from 2023-08-31 00-22-03](https://github.com/itravnn/kcsc_train/assets/127108265/2fb6d4e4-7867-4be4-877c-fc9b867424c7)
+
 
 Có thể dùng lệnh `lswh -short` để tóm ngắn gọn thông tin CPU, bộ nhớ, các ổ dĩa, các cổng USB, card mạng…
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/a93e09ff-6057-4b0d-b928-68d7bc06236d)
+![Screenshot from 2023-08-31 00-23-40](https://github.com/itravnn/kcsc_train/assets/127108265/397ee4b4-afb3-4be8-babd-6036dd2445d7)
+
 
 Để xem thông tin chi tiết CPU như số core, tốc độ, dung lượng bộ nhớ cache…, dùng lệnh **lscpu**
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/0bc4249a-42ed-4c83-b9af-9e73f1357977)
+![Screenshot from 2023-08-31 00-26-49](https://github.com/itravnn/kcsc_train/assets/127108265/25bdf984-c11b-42cf-9d67-a787364893d1)
+
 
 **free** để kiểm tra dung lượng RAM đang sử dụng và còn trống trên hệ thống
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/8308fb2e-dd24-4df0-b4ff-9cbbbdc10884)
+![Screenshot from 2023-09-19 21-48-12](https://github.com/itravnn/kcsc_train/assets/127108265/7764da6c-656a-43b5-97ca-2a859ca002bb)
+
 
 các options:
 - `-h`: (human-readable) hiển thị cách dễ đọc với con người
@@ -99,25 +109,30 @@ các options:
 
 **df** hoặc **df -h** để hiện thị địa chỉ của tệp tin và dung lượng của ổ cứng
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/61588592-2e3e-43f7-9a35-100525b8c29d)
+![Screenshot from 2023-09-19 21-46-43](https://github.com/itravnn/kcsc_train/assets/127108265/7110f518-247e-42a4-85fd-85df66c49f3d)
+
 
 **top** hiển thị thông tin về hệ thống Linux của bạn, các tiến trình đang chạy và tài nguyên hệ thống, bao gồm: CPU, RAM, phân vùng Swap, và tổng số các tác vụ đang chạy.
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/1b1e10cd-93cd-4868-9d9b-fe6a8b7432a8)
+![Screenshot from 2023-09-20 16-54-52](https://github.com/itravnn/kcsc_train/assets/127108265/799f2d3b-9f86-49d5-a09c-c5d8acd2bea2)
+
 
 Để liệt kê các gói đã cài đặt trên Ubuntu, có thể sử dụng lệnh `apt list --installed`. 
 
 _Advanced Packaging Tool (apt) cung cấp tất cả các tiện ích quan trọng mà bạn cần để quản lý các gói trên hệ thống. Bạn có thể cài đặt, gỡ, xóa và dọn dẹp các gói bằng các gói công cụ này_
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/8c8a9d15-bc20-401a-967b-131e7ac3bcd3)
+![Screenshot from 2023-09-19 22-37-53](https://github.com/itravnn/kcsc_train/assets/127108265/b0e940c4-7bff-4729-83e8-b2c3556f4667)
+
 
 Để đếm số gói đã cài đặt của apt trong ubuntu, sử dụng lệnh `apt list --installed | wc -l`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/f9d06d2e-d548-4801-9d05-a3f738689022)
+![Screenshot from 2023-09-19 22-42-40](https://github.com/itravnn/kcsc_train/assets/127108265/19a667e9-da1b-4ec4-b4ad-cca49de20951)
+
 
 Có thể sử dụng tiện ích _dpkg_ để liệt kê các gói đã cài đặt: `dpkg -l` hoặc `dpkg -list`
 
-![image](https://github.com/itravnn/kcsc_train/assets/127108265/9e13a403-c80d-4349-897f-366bca8093c5)
+![Screenshot from 2023-09-19 22-59-44](https://github.com/itravnn/kcsc_train/assets/127108265/ad9bf44a-2dea-492f-874a-a3e9993e0fc7)
+
 
 _Sự khác biệt giữa `apt` và `dpkg` là: dpkg sẽ không cài dặt gói phụ thuộc, apt thì sẽ tự động kiểm tra và tải xuống các phần phụ thuộc_
 
