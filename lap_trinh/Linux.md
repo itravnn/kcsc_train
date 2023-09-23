@@ -73,7 +73,6 @@ các options:
 
 ![Screenshot from 2023-08-31 00-09-32](https://github.com/itravnn/kcsc_train/assets/127108265/48bc8201-2c46-4d31-b578-e84cf186a507)
 
-
 Đầu ra ![Screenshot from 2023-08-31 00-10-21](https://github.com/itravnn/kcsc_train/assets/127108265/3b6006ea-3b86-48fc-868c-fbbe9819f7f4)
  cho biết bạn đang sử dụng kiến trúc 64bit. Đầu ra `i686` sẽ là hệ thống 32bit
 
@@ -204,7 +203,6 @@ Thông tin về file **/etc/passwd**
   
 ![Screenshot from 2023-09-21 02-25-21](https://github.com/itravnn/kcsc_train/assets/127108265/39bbe0c2-ef55-4f62-a122-ebbcf7faa9c9)
 
-
    Nhớ đặt pass cho user sau khi add
 
  ![Screenshot from 2023-09-21 02-33-26](https://github.com/itravnn/kcsc_train/assets/127108265/c9bcd5eb-1e77-44e9-98d6-b814c36c7341)
@@ -213,8 +211,6 @@ Thông tin về file **/etc/passwd**
 
  ![Screenshot from 2023-09-21 02-30-42](https://github.com/itravnn/kcsc_train/assets/127108265/bf6627ad-9844-433e-959a-e5ff39bd0aee)
 
-
-   
    - Thay đổi thông tin cá nhân: `usermod [option] <username>`
      các option tương tự **useradd**
 
@@ -228,7 +224,6 @@ Thông tin về file **/etc/passwd**
 - Về file **/etc/group**
 
 ![Screenshot from 2023-09-21 02-03-06](https://github.com/itravnn/kcsc_train/assets/127108265/dac4fe40-23e2-408d-a2d1-368e5ad4697a)
-
 
 _Các user có thể đọc được file này, tuy nhiên chỉ root mới thay đổi được_
 
@@ -249,13 +244,11 @@ Thông tin file **/etc/group**
 
 ![Screenshot from 2023-09-21 23-42-56](https://github.com/itravnn/kcsc_train/assets/127108265/714e2856-efaa-4593-81ae-859960b6eba4)
 
-
 _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà không phân biệt hoa thường_
 
   - Tìm kiếm các thư mục (-type d) có tên là src : `find / -type d -name src`
 
 ![Screenshot from 2023-09-21 23-46-26](https://github.com/itravnn/kcsc_train/assets/127108265/f4086336-911d-4960-984c-01c7a648d8fe)
-
 
    - **find / -type f** : chỉ tìm file
     
@@ -271,6 +264,7 @@ _`-iname` thêm i (tức là ignore) vào là bạn có thể tìm theo tên mà
    - -w : tìm nguyên từ
 - Ví dụ:
   - Tìm những dòng có từ "chào" trong file xin.txt
+  
 ![Screenshot from 2023-09-22 00-19-22](https://github.com/itravnn/kcsc_train/assets/127108265/02f2f7de-8717-43ed-aa88-04b085d8e34d)
 
   - Tìm file khi nhớ tên file và địa chỉ ở đâu, ta có thể sử dụng option _-r_. Giả sử tìm từ "chào" mà ta không nhớ tên file hay gì hết, ta dùng lệnh `grep -r "chào" *`
