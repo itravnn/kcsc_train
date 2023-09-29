@@ -1,3 +1,68 @@
+# Giới thiệu chung
+## PHP
+- PHP là một ngôn ngữ lập trình dùng để xây dựng các ứng dụng web, hay là  ngôn ngữ kịch bản vận hành mã nguồn mở, phục vụ cho các công việc ở phía server
+
+- Một số câu lệnh trong php :
+
+  - Câu lệnh **if else** :
+```
+if ($bieuthuc){
+    // Những Câu Lệnh 1;
+}
+else{
+    // Những câu lệnh 2;
+}
+```
+- Có 2 cách gửi dữ liệu từ Client lên Server đó là dùng phương thức **GET** hoặc phương thức **POST**:
+
+  - Phương thức **GET** là phương thức gửi dữ liệu thông qua đường dẫn URL . Server sẽ nhận đường dẫn đó và phân tích trả về kết quả. Tất cả các dữ liệu mà Client gửi lên bằng phương thức GET đều được lưu trong một biến toàn cục mà PHP tự tạo ra đó là biến $_GET
+
+  - Phương thức **POST** sẽ gửi dữ liệu qua một cái form HTML và các giá trị sẽ được định nghĩa trong các input gồm các kiểu (textbox, password, ...) và được nhận dang thông qua tên (name) của các input đó. Tất cả các dữ liệu gửi bằng phương thức POST đều được lưu trong một biến toàn cục $_POST do PHP tự tạo ra
+
+## MySQL
+- MySQL là một hệ quản trị CSDL dùng để lưu trữ dữ liệu và nó thường được dùng kèm theo với PHP.  CSDL SQL là ngôn ngữ dùng để truy vấn dữ liệu, là cầu nối giữa lập trình viên và hệ quản trị CSDL. Cách vận hành trong MySQL :
+
+  - B1: MySQL tạo ra bảng để lưu trữ dữ liệu, định nghĩa sự liên quan giữa các bảng đó.
+
+  - B2: Client sẽ gửi yêu cầu 
+
+  - B3: Ứng dụng trên server sẽ phản hồi thông tin và trả về kết quả trên máy client.
+
+- Một số lệnh của SQL là :
+
+  - **SELECT** <tên các thuộc tính> FROM <tên các quan hệ>
+  - Lệnh **INSERT** trong MySQL được sử dụng để chèn một bản ghi đơn hoặc nhiều bản ghi vào một bảng. Cú pháp cho câu lệnh INSERT trong MySQL : 
+```
+INSERT INTO table
+(column1, column2, ... )
+VALUES
+(expression1, expression2, ... ),
+(expression1, expression2, ... ),
+...;
+```
+  - lệnh thực hiện truy vấn: **mysqli_query( $connect,' các câu lệnh truy vấn ')**
+
+- Một số hàm trong MySQL :
+
+  - **isset()**: là hàm kiểm tra một biến có tồn tại hay không.
+  - **include()** : là hàm triệu gọi file
+  - **empty()** : trong php dùng để kiểm tra một biến nào đó có giá trị rỗng hoặc chưa được khởi tạo hay không
+  - **mysqli_query( $connect,' các câu lệnh truy vấn ')** : hàm thực hiện truy vấn
+  - **mysqli_fetch_array()** : Hàm này trả về hàng (row) ở dạng như một mảng liên hợp, một mảng số, hoặc cả hai. Hàm này trả về FALSE nếu không có hàng nào.
+
+- Các ràng buộc SQL được sử dụng để chỉ định các quy tắc cho _dữ liệu trong bảng_. Các ràng buộc thường được sử dụng trong SQL:
+
+  - **NOT NULL** – Đảm bảo rằng một cột không thể có giá trị NULL
+
+  - **UNIQUE** – Đảm bảo rằng tất cả các giá trị trong một cột là khác nhau
+
+  - **PRIMARY KEY** – Xác định duy nhất từng hàng trong bảng
+
+  - **CHECK** – Đảm bảo rằng tất cả các giá trị trong một cột thỏa mãn một điều kiện cụ thể
+
+  - **INDEX** – Được sử dụng để tạo và truy xuất dữ liệu từ cơ sở dữ liệu rất nhanh chóng
+
+## Tạo một trang web có chức năng đăng ký, đăng nhập
 Trước khi thực hiện cần đảm bảo rằng đã khởi động XAMPP khởi động Apache và MySQL đã nhé!
 
 Cần tạo một thư mục trong _htdocs_ để chứa 4 file tên là dangky.php, dangnhap.php, xuly.php, connect.php
@@ -107,7 +172,6 @@ if (isset($_POST['dangnhap']))
         $sql = "select * from tbl_user where username = '$username' and password = '$password'";  
         // Thực thi câu truy vấn
         $result = mysqli_query($conn,$sql);  
-        // Hàm này trả về hàng (row) ở dạng như một mảng liên hợp, một mảng số, hoặc cả hai. Hàm này trả về FALSE nếu không có hàng nào.
         // Nội dung của các row được gán cho biến $row
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);  
     
@@ -145,5 +209,17 @@ if($conn->connect_error){
 }
 ?>
 ```
+## Kết quả
+Ta có trang đăng kí
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/db25dfd1-764c-4a83-84e7-df86d6528294)
+
+Trang đăng nhập
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/7c0ef1ba-a1ae-4b1d-be5d-c8142f56bf0e)
+
+Sau khi đăng nhập thành công
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/d8439d85-95ff-499d-ba4f-8580da089d53)
 
 
