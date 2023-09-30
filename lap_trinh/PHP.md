@@ -258,7 +258,9 @@ Hiểu sơ về cách hoạt động như vầy rồi, sau đây thì ta sẽ s�
 
 ## Khai thác SQL Injection bằng cách sử dụng UNION<a name='c5'></a>
 
-` ' UNION SELECT 1-- - `
+```
+' UNION SELECT 1-- -
+```
 
 Câu lệnh này sẽ tạo ra một thông báo lỗi cho bạn biết rằng câu lệnh UNION SELECT có số cột khác với truy vấn SELECT ban đầu.
 
@@ -266,13 +268,17 @@ Câu lệnh này sẽ tạo ra một thông báo lỗi cho bạn biết rằng c
 
 Thử lại bằng cách thêm cột khác
 
-` ' UNION SELECT 1,2,3,4,5,6,7-- -`
+```
+' UNION SELECT 1,2,3,4,5,6,7-- -
+```
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/5a4061c1-01a8-4eda-a112-0825cce6b00b)
 
 Thành công, thông báo lỗi đã biến mất và thông tin đã được hiển thị, nhưng bây giờ muốn hiển thị dữ liệu của người dùng. Trước tiên, cần lấy được tên CSDL 
 
-`' UNION SELECT 1,2,3,4,5,6,database()-- -`
+```
+' UNION SELECT 1,2,3,4,5,6,database()-- -
+```
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/6db66a3a-a25c-4b39-a2c6-c2a487fcdde1)
 
