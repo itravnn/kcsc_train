@@ -133,7 +133,7 @@ ví dụ show quyền đang có của thanh
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/a0bbe323-c357-4821-9b28-932469f9ded0)
 
-Nếu cần thu hồi lại quyền của user, **hãy dùng lệnh REVOKE**:
+Nếu cần thu hồi lại quyền của user, hãy dùng lệnh **REVOKE**:
 ```
 REVOKE type_of_permission ON database_name.table_name FROM 'username'@'localhost';
 ```
@@ -159,7 +159,7 @@ gắn quyền
 
 Ở file _dangky.php_ và _connect.php_ vẫn sẽ để nguyên
 
-Tại file _xyly.php_ ta thêm hàm **mp5()** vào giá trị passwd nhập vào
+Tại file _xyly.php_ ta thêm hàm **mp5()** vào giá trị passwd nhập vào ( phần input passwd của file _dangnhap.php_ cũng vậy)
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/99adea16-d6e3-44ca-9f3d-55374bb7c2cd)
 
