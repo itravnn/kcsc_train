@@ -1,4 +1,5 @@
 ## Các kiểu tấn công SQLi
+
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/c940dec0-6b84-432c-8ace-04d1df4a3b9e)
 
 - **In-band SQLi**
@@ -52,7 +53,7 @@ _Mã hóa dữ liệu đăng nhập và mật khẩu, Mã hóa có thể đượ
 
 Ví dụ: 
 
-Ở file _xuly.php_ ban đầu có giá trị **`$password = $_POST['txtPassword']`** bây giờ ta thêm hàm **md5()** để mã hóa passwd, giá trị lúc này thành **`$password   = md5($_POST['txtPassword'])`**. Khi đó, nếu ta nhập **passwd=1** thì giá trị passwd được lưu tại bảng CSDL sẽ được mã hóa thành **c4ca4238a0b923820dcc509a6f75849b**.  
+Ban đầu ta gán cho passwd có giá trị **`$password = $_POST['txtPassword']`** bây giờ ta thêm hàm **md5()** để mã hóa passwd, giá trị lúc này thành **`$password   = md5($_POST['txtPassword'])`**. Khi đó, nếu ta nhập **passwd=1** thì giá trị passwd được lưu tại bảng CSDL sẽ được mã hóa thành **c4ca4238a0b923820dcc509a6f75849b**.  
 
 ### 2. Sử dụng Prepared Statements trong PHP
 Ví dụ :Sử dụng **PDO Prepared statements**
@@ -77,14 +78,128 @@ mysqli_stmt_execute($stmt);
 
 $result = mysqli_stmt_get_result($stmt);
 ```
-### 3. Sử dụng tường lửa
+### 3. Tối thiểu hóa đặc quyền người dùng
+Để giảm thiểu tác dộng trong 1 cuộc tấn công Sqli thì người dùng chỉ nên có 1 số đặc quyền nhất định, các đặc quyền bổ dung sẽ được cấp khi cần thiết. Một số quyền nên cấp cho người dùng :
+
+  | Privilege | Access  |
+  | :------   | :------ |
+  | Read      | Yes     |
+  | Write     | Yes     |
+  | Update    | Yes     |
+  | Delete    | Yes     |
+  | DROP Table| None    |
+  | Alter Table | None  |
+
+#### Ví dụ để tạo 1 user mới và gán quyền cho user trên Ubuntu linux
+
+- B1: tạo 1 user mới với tên **thanh** và **passwd=111**
+
+```
+mysql> CREATE USER 'thanh'@'localhost' IDENTIFIED BY '111';
+```
+
+Lúc này thanh chưa có quyền làm gì với CSDL. Do vậy ta sẽ cấp cho thanh quyền truy cập vào các thông tin cần thiết
+
+- B2: Gán quyền
+
+```
+mysql> GRANT ALL PRIVILEGES ON * . * TO 'thanh'@'localhost';
+```
+Dấu **`*`** ở trên tương ứng với _cơ sở dữ liệu_ và _bảng_ mà user có thể truy cập - cụ thể là lệnh này cho phép người dùng thêm, sửa, xóa thực thi các công việc trên tất cả các bảng trong cơ sở dữ liệu
+
+Các lệnh thường dùng để gán quyền cho user:
+  | Privilege | Access  |
+  | :------   | :------ |
+  | ALL PRIVILEGES | Cho phép MySQL user thực hiện toàn quyền trên databases (hoặc 1 vài db được thiết lập)|
+  | CREATE | Cho phép user tạo mới tables hoặc databases|
+  | DROP | Cho phép xóa tables hoặc databases|
+  | DELETE | Cho phép xóa bản ghi dữ liệu trong bảng tables|
+  | INSERT | Cho phép thêm bản ghi mới vào bảng csdl|
+  | SELECT | Cho phép sử dụng lệnh Select để tìm kiếm dữ liệu|
+  | UPDATE | Cho phép cập nhật csdl|
+  | GRANT OPTION | Cho phép gán hoặc xóa quyền của người dùng khác|
+
+- B3: Cập nhật thay đổi người dùng
+
+Để thay đổi được thực hiện thì cần run câu lệnh
+```
+FLUSH PRIVILEGES;
+```
+Để hiện thị quyền hạn của user ta có thể sử dụng lệnh:
+```
+SHOW GRANTS FOR 'username'@'localhost';
+```
+ví dụ show quyền đang có của thanh
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/a0bbe323-c357-4821-9b28-932469f9ded0)
+
+Nếu cần thu hồi lại quyền của user, **hãy dùng lệnh REVOKE**:
+```
+REVOKE type_of_permission ON database_name.table_name FROM 'username'@'localhost';
+```
+Hoặc bạn cũng có thể xóa user:
+
+```
+DROP USER 'username'@'localhost';
+```
+#### Hoặc bạn cũng có thể thực hiện tạo, gán quyền với phpMyAdmin trên XAMPP 
+
+tạo tài khoản
+
+![Screenshot from 2023-10-08 22-15-09](https://github.com/itravnn/kcsc_train/assets/127108265/15b008fc-cc78-41de-a044-3a82b3e7eb60)
+
+gắn quyền
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/1bb84b96-8995-47fa-af0e-0065b1b38aee)
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/0c5ebf36-3808-47d0-9efb-ea3d1290a5a5)
 
 
+## Áp dụng vào bài code trước
 
+Ở file _dangky.php_ và _connect.php_ vẫn sẽ để nguyên
 
+Tại file _xyly.php_ ta thêm hàm **mp5()** vào giá trị passwd nhập vào
 
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/99adea16-d6e3-44ca-9f3d-55374bb7c2cd)
 
+Ở phần xử lý đăng nhập của file _dangnhap.php_ ta sẽ sử dụng Prepared Statements thay vì dùng các câu truy vấn sql
 
+```
+if (isset($_POST['dangnhap'])) {
+        // Kiểm tra username hoặc password trong CSDL có trùng không
+        $sql = "select * from tbl_user where username = ? and password = ? ";
+        
+        // tạo prepared statement
+        $stmt = mysqli_stmt_init($conn);
 
+        if (mysqli_stmt_prepare($stmt,$sql)){
 
+            // dùng để liên kết các tham số đầu vào với câu lệnh SQL đã được biên dịch. Nó được sử dụng để tránh các lỗi bảo mật và để tránh việc phải thực hiện các chuỗi để truy vấn cơ sở dữ liệu.
+            mysqli_stmt_bind_param($stmt,"ss", $username, $password );
 
+            //  dùng để thực thi câu lệnh SQL đã được biên dịch trước bởi hàm `mysqli_stmt_prepare()`. Nó trả về TRUE nếu câu lệnh được thực thi thành công và FALSE nếu thất bại.
+            mysqli_stmt_execute($stmt);
+
+            $result = mysqli_stmt_get_result($stmt);
+            $row = mysqli_fetch_array($result, MYSQLI_ASSOC); 
+
+            if (mysqli_num_rows($result) >0){
+                echo "Xin chào " .$username. ". Bạn đã đăng nhập thành công. <br/> " ;
+                echo "Thông tin tài khoản <br/>";
+                echo "Giới tính :{$row['sex']}  <br/> ";
+                echo "Email :{$row['email']}  <br/> ";
+                echo "Địa chỉ :{$row['address']}  <br/> ";
+                echo "Sđt :{$row['Sđt']}  <br/> ";
+                die();
+                }
+                else{  
+                    echo "Tên đăng nhập or Mật khẩu không đúng. Vui lòng nhập lại. <a href='javascript: history.go(-1)'>Trở lại</a>";
+                exit;
+                }     
+        } else {
+            echo "SQL statement failed";
+        }
+```
+
+hết roài!!!
