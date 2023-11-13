@@ -12,8 +12,12 @@ Phân loại: **3** loại
 
 >**Reflected XSS** và **Stored XSS** đều có đặc điểm chung là các đoạn mã nguy hiểm sau khi được chèn vào sẽ *được thực thi sau respond của server, có nghĩa là lỗi nằm về phía server.* Có một kiểu khai thác XSS khác đi ngược lại với đặc điểm này, mã độc được *thực thi ngay khi xử lý phía client mà không thông qua server*, được biết đến với cái tên **DOM Based XSS**.
 
-- **DOM Based XSS :** là kỹ thuật khai thác XSS dựa trên việc thay đổi cấu trúc DOM của tài liệu, cụ thể là HTML. DOM Based có phần giống với Reflected hơn là Stored XSS khi phải lừa người dùng truy cập vào một URL đã nhúng mã độc. 
+- **DOM Based XSS :** là kỹ thuật khai thác XSS dựa trên việc thay đổi cấu trúc DOM của tài liệu, cụ thể là HTML. DOM Based có phần giống với Reflected hơn là Stored XSS khi phải lừa người dùng truy cập vào một URL đã nhúng mã độc.
 
+### Cách ngăn chặn XSS
+- Kiểm tra và lọc dữ liệu đầu vào, sử dụng các hàm như `htmlentities()`, `htmlspecialchars()` để mã hoá các ký tự đặc biệt.
+- Mã hóa các dữ liệu đầu ra như password, ... bằng hàm như `base_encode()`
+- CSP (Content Security Policy) : là một tính năng bảo mật web cho phép người quản trị trang web cấu hình các nguồn tài nguyên cho phép tải và sử dụng trên trang web đó. Điều này có thể giúp ngăn chặn các cuộc tấn công XSS bằng cách không cho phép tài nguyên không đáng tin cậy được tải và sử dụng trên trang web.
 # Xây dựng lab
 ## Reflected XSS
 ```
