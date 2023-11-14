@@ -119,12 +119,44 @@ tiếp theo, nếu ta nhập input vào là **`<script> alert("hacked") </script
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/eb9f8b45-db34-4cff-9011-c3b326a11485)
 
-có lỗ hổng xss và ở trường hợp này đoạn mã sẽ được lưu vào CSDL
+có lỗ hổng xss và ở trường hợp này đoạn mã sẽ được lưu vào CSDL, nhiều trường hợp khác, hacker sẽ gửi đoạn script độc hại hơn với nhiều mục đích như chiếm lấy cookie người dùng,... sau đó đoạn script lưu lại tịa CSDL và chỉ cần người dùng đăng nhập thì dữ liệu sẽ được gửi tới hacker mà người dùng không hề hay biết
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/9b9e7847-02a3-435c-a0ee-ff2f337c4140)
 
+## DOM-based XSS
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<form>
+		Enter your search: <input type="text" name="search" id="search"><br/>
+		<input type="submit" value="Submit" onclick="check_xss()">
+	</form>
 
+	<script type="text/javascript">
+		function check_xss() {
+		var valueSearch = document.getElementById("search").value;
+        document.write("you searched :"+valueSearch);
+		}
+	</script> 
 
+</body>
+</html>
+```
+ở đây, biến `valueSearch` lấy giá trị input của `search` thông qua hàm `getElementById()`, sau đó sử dụng hàm `document.write()` để ghi nội dung. Ví dụ nhập vào 1 đoạn search bất kì, sẽ hiển thị như dưới
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/7f97cf86-d0ee-47e9-800e-bfe18ce7aeec)
+
+thử nhập `<script> alert("so pretty :>") </script>` thì thấy hiện thông báo, đoạn script đã được thực hiện
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/89e9b71a-98ed-44c4-92cf-2c09cda9cd7b)
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/2aafdb17-5119-4cd2-af43-df8f23082058)
 
 
 
