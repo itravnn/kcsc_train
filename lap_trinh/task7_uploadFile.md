@@ -22,7 +22,7 @@ Phần xử lý upload
     $target_dir = './uploads/';                // lưu file vào thư mục uploads
     $file_name = $_FILES["txtFile"]["name"];   //lấy tên của file
     $target_file   = $target_dir . $file_name; // vị trí lưu file trong server
-
+    $img_type = $_FILES["txtFile"]["type"];
     // kiểm tra file đã tồn tại hay chưa
     if(file_exists($target_file)){
         echo "File đã tồn tại !!!";
@@ -87,6 +87,17 @@ Cứ vậy cho breakpoint chạy đến hết dòng 18 thì các biến được
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/b65023a0-3731-4217-89c9-468debbe2f6f)
 
+### Đối chiếu các giá trị các biến trong phần debug với các giá trị biến của request bị chặn bởi burp suite
+
+Cần chú ý phần giá trị của tên file gửi lên **filename** và phần định dạng file **type**
+
+Ở phần code trên thì giá trị của biến **$file_name**, **$img_type** phần debug chính là giá trị biến **filename**, **Content-Type** ở request bắt được từ burp suite
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/05b1fce3-38cc-4510-a4e4-19a9b8e0c936)
+
+![image](https://github.com/itravnn/kcsc_train/assets/127108265/4c5d5d9a-9af7-4f05-8e6d-c921d85bf25b)
+
+
 ## Filter và bypass filter file upload
 
 ### Một số filter để ngăn chặn khả năng tải lên mã độc khi upload file như:
@@ -110,7 +121,7 @@ Trước tiên cần đổi lại extension của file thành **hack.php.jpg** �
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/abaf2ad7-4acf-4d84-9b00-89bc185b060d)
 
-Sau đó sử dụng burp suite để chặn lại request gửi đến server, sau đó lại đổi tên file thành **hack.php** rồi send
+Lúc này phần định dạng file **content-type** sẽ ghi nhận file gửi lên là file ảnh, nên ở bước tiếp theo ta chỉ cần sử dụng burp suite để chặn lại request gửi đến server, sau đó lại đổi tên file **filename = hack.php** rồi send
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/ced41500-03ed-4f96-880e-385fbe0b9e45)
 
@@ -120,7 +131,7 @@ Kết quả thu được rằng đã upload thành công file
 
 ### 2. Content/type Vertification
 
-Đây là kiểu xác thực mà nhà phát triển yêu cầu file upload trong trường hợp này **bắt buộc** phải là kiểu image thì mới được chấp thuận. Tuy nhiên, Content/type lại có thể thay đổi trước khi đến server cho nên chúng ta chỉ cần đổi từ type ***application/octet-stream** sang image/(kiểu định dang ảnh của bạn) ví dụ như là image/png
+Đây là kiểu xác thực mà nhà phát triển yêu cầu file upload trong trường hợp này **bắt buộc** phải là kiểu image thì mới được chấp thuận. Tuy nhiên, **Content/type** lại có thể thay đổi trước khi đến server cho nên chúng ta chỉ cần đổi từ type ***application/octet-stream** sang image/(kiểu định dang ảnh của bạn) ví dụ như là image/png
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/4fa74d22-9411-4b40-b1bb-8a8bdf99a422)
 
@@ -132,7 +143,9 @@ Ví dụ một trang web lọc các file php không cho tải lên server
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/b1331331-6645-48c0-a158-63d1b5dac04b)
 
-Một số cách để bypass trường hợp này như: đổi đuôi extension thành `shell.php1` ,`shell.php2` ,`shell.php3`, ... hoặc là thay đổi ký tự hoa thường:  `shell.Php1`, `shell.PHP2` , ... hoặc là sủ dụng file **.htaccess** 
+ở đây, biến `$imageFileType` dùng để lấy phần mở rộng của file (jpg, png, txt ...). Như vậy việc đăng tải 1 file php lên trang web là không thể
+
+Vì vậy, để bypass trường hợp này thì ta cần thay đổi phần đuôi của **filename** như: đổi đuôi extension thành `.php1` ,`.php2` ,`.php3`, ... hoặc là thay đổi ký tự hoa thường:  `.Php1`, `.PHP2` , ... hoặc là sủ dụng file **.htaccess** 
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/b4c955a5-201f-4887-85de-5bace6df19df)
 
@@ -143,15 +156,15 @@ Trái với black list, một số trang web lại yêu cầu bạn bắt buộc
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/95a0e9f2-f46f-4a9f-95ca-ea4ff903f058)
 
-trường hợp này, chúng ta cũng bypass tương tự như ở phần bypass Content/type Vertification , bằng cách sửa đổi Content/type
+trường hợp này, chúng ta cũng bypass tương tự như ở phần bypass Content/type Vertification , bằng cách sửa đổi **Content/type**
 
 ### Khác
 
 Ngoài ra còn 1 số các bypass khác như
 
-- Null Byte Injection là một kỹ thuật khai thác trong đó sử dụng các ký tự null byte URL-encoded (ví dụ: 00%, hoặc 0x00 trong hex). Phần phía sau %00 sẽ được hiểu là giá trị null , là giá trị kết thúc của chuỗi nên tệp được tải lên với tên là shell.php thay vì shell.php%00.png
+- Null Byte Injection là một kỹ thuật khai thác trong đó sử dụng các ký tự null byte URL-encoded (ví dụ: 00%, hoặc 0x00 trong hex). Phần phía sau %00 sẽ được hiểu là giá trị null , là giá trị kết thúc của chuỗi nên nếu ta áp dụng null byte:  `shell.php%00.png` thì tệp được tải lên với tên là `shell.php`
 
-- Sử dụng Double Extension : shell.php.jpg,shell.php;.jpg,shell.php:jpg
+- Sử dụng Double Extension : `shell.php.jpg`, `shell.php;.jpg`, `shell.php:jpg`...
 
 
 
