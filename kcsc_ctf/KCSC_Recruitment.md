@@ -4,7 +4,7 @@ Vào link thì web có giao diện như dưới, có phần để nhập tên v�
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/4fcbf529-53df-4359-9ec8-1aac2def8a31)
 
-Em nhập thử linh tinh vô coi, umm thì không được gì cả. Rồi em xem hint thì ommmm em cũng hiểu cho lắm :<
+Em nhập thử linh tinh vô coi, umm thì không được gì cả. Rồi em xem hint thì umm em cũng hiểu cho lắm :<
 
 Xong em vào phần khai khác lỗ hổng để xem thì có đoạn ni em thấy có hiểu chút 
 
@@ -16,11 +16,11 @@ O:4:"User":2:{s:4:"name":s:6:"carlos"; s:10:"isLoggedIn":b:1;}
 
 Như ở ví dụ trên thì đối tượng user có 2 thuộc tính là name là thuộc tính isLoggedIn, thuộc tính name có giá trị là carlos , còn thuộc tính isLoggedIn thì có giá trị true ( nếu sai thì  là số 0)
 
-Như vậy được rùi em đẩy lên burp xem thử
+Như vậy được rùi em gửi lên burp suite xem thử
 
 ![image](https://github.com/itravnn/kcsc_train/assets/127108265/c6888fda-c411-465e-a04a-72ea8e219530)
 
-Giá trị của trainer đã được encode, xem phần đã decode thì nhận thấy giá trị isChampion là 0, sửa 0 thành 1 để đăng nhập được chấp nhận thì sẽ ra flag
+Giá trị của **trainer** đã được encode, xem phần đã decode thì nhận thấy giá trị **isChampion** là 0, sửa 0 thành 1 để đăng nhập được chấp nhận thì sẽ ra flag
 
 `KCSC{n0w_y0u_kn0w_s3r1al1z3_f0m4rt}`
 
@@ -56,11 +56,11 @@ rồi đó, mình ngồi suốt chỉ để loay hoay với mấy cách như ki�
 
 rồi sai khi đọc wu thì mình mới nghĩ sao lúc đấy không nghĩ đến đẩy lên burp để thây đổi tên file, aaaaaaaaaaaa
 
-vậy rồi sau khi dùng burp bwats request gửi lên, mình sẽ thay đổi duôi file thành **.php**, vì có vể như web chỉ cần xác nhận đúng định dạng file gửi là ok
+vậy rồi sau khi dùng burp suite request gửi lên, mình sẽ thay đổi đuôi file thành **.php**, vì có vẻ như web chỉ cần xác nhận đúng định dạng file gửi là ok
 
 ![Screenshot 2023-12-18 213601](https://github.com/itravnn/kcsc_train/assets/127108265/eb1112cd-3d36-499f-a9ea-5deb4c6a2556)
 
-sau khi đã upload thành công, ta chỉ việc ls để xem thư mục hiện có, đến `ls ../../../../` thì thấy có thư mục flag
+sau khi đã upload thành công, ta chỉ việc dùng lệnh **ls** để xem thư mục hiện có, đến `ls ../../../../` thì thấy có thư mục flag
 
 ![Screenshot 2023-12-18 214645](https://github.com/itravnn/kcsc_train/assets/127108265/3d2fd474-7a96-4268-b5cc-f200b42ba961)
 
